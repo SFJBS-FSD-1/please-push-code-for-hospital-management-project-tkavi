@@ -232,13 +232,12 @@ def medicine_by_Id():
 def medicine_update():
     if request.method == 'POST':
         id = request.form['id']
-        print('id', id)
         medicine = Medicine.query.filter_by(id=id).first()
-        print('medicine', medicine)
+
         if medicine:
             medicine_data = {'id': medicine.id, 'name': medicine.medicine_name,
                              'qty': medicine.quantity, 'rate': medicine.rate}
-            print(medicine_data)
+
             return render_template("medicineById.html", update_msg =medicine_data)
         else:
             return render_template("medicineById.html", msg="Medicine not Found")
@@ -246,7 +245,6 @@ def medicine_update():
 @app.route('/update_med', methods=['POST'])
 def update_med():
     if request.method == 'POST':
-        print("inside update")
         id = request.form['id']
         medicine_name = request.form['name']
         quantity = request.form['qty']

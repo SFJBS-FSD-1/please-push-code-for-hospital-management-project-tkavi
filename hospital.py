@@ -271,6 +271,5 @@ def medicine_delete():
         else:
             return render_template("medicineById.html", msg = "Medicine not found")
 
-
 if __name__ == "__main__":
     app.run()

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"><!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+        form { border="3px solid #f1f1f1":}
+    </style>
+</head>
+<body>
+
+<center>
+<div class="container">
+<h3>Welcome to Hospital Management App</h3>
+
+<form method="post" action="/register_medicine">
+    <div class="form-container">
+        <label><b>Medicine Name</b></label>
+        <input type="text" name="name" placeholder="Medicine Name" required>
+    </div>
+
+    <div class="form-container">
+        <label><b>Quantity</b></label>
+        <input type="text" name="qty" placeholder="Quantity" required>
+    </div>
+
+    <div class="form-container">
+        <label><b>Rate</b></label>
+        <input type="text" name="rate" placeholder="Rate" required>
+    </div>
+
+    <div class="form-container">
+        <button type="submit" style="margin:5px;"> Register </button>
+    </div>
+</form>
+
+<form method="get" action="/getAllMedicines">
+        <button type="submit" style="margin:5px;"> Medicines List </button>
+</form>
+
+<form method="get" action="/getMedicine">
+        <button type="submit" style="margin:5px;"> Medicine by Id </button>
+</form>
+
+{% if medicine %}
+<h3>{{medicine}} registered successfully!!</h3>
+{% endif %}
+
+{% if msg %}
+<h4>{{msg}}</h4>
+{% endif %}
+
+</center>
+</body>
+</html>

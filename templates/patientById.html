@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"><!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+        form { border="3px solid #f1f1f1":}
+    </style>
+</head>
+<body>
+<center>
+<div class="container">
+<h3>Welcome to Hospital Management App</h3>
+
+        <form method="get" action="/">
+        <button type="submit" style="margin:5px;"> Main Menu </button></form>
+
+        <div class="form-container">
+        <form method="post" action="/getPatientByPhone">
+            <input type="text" name="phone" placeholder="Patient Phone Number">
+            <button type="submit" style="margin:5px;"> Get Patient Details </button></form>
+
+        <form method="post" action="/patient/update">
+            <input type="text" name="phone" placeholder="Patient Phone Number">
+            <button type="submit" style="margin:5px;"> Update Patient Details </button></form>
+
+        <form method="post" action="/patient/delete">
+            <input type="text" name="phone" placeholder="Patient Phone Number">
+            <button type="submit" style="margin:5px;"> Delete Patient </button></form>
+</div>
+</div>
+
+{% if data %}
+    <h3>Requested Patient details are below.</h3>
+    <p>Patient Id: {{data['id']}}</p>
+    <p>Name: {{data['name']}}</p>
+    <p>Phone Number: {{data['phone']}}</p>
+    <p>Age: {{data['age']}}</p>
+    <p>Address: {{data['address']}}</p>
+    <p>State: {{data['state']}}</p>
+    <p>City: {{data['city']}}</p>
+    <p>Patient Status: {{data['status']}}</p>
+    <p>Bed Type: {{data['bed']}}</p>
+{% endif %}
+
+{% if update_msg %}
+     <div class="form-container">
+         <h3>Update Patient Details</h3>
+         <form method="post" action="/update">
+             <label><b>Name</b></label>
+            <input type="text" name="name" placeholder="Name" >
+
+            <label><b>Phone Number</b></label>
+            <input type="text" name="phone" placeholder="Phone Number" >
+
+            <label><b>Age</b></label>
+            <input type="text" name="age" placeholder="Age" >
+
+            <label><b>Address</b></label>
+            <input type="text" name="address" placeholder="Address" >
+
+            <label><b>State</b></label>
+            <input type="text" name="state" placeholder="State" >
+
+            <label><b>City</b></label>
+             <input type="text" name="city" placeholder="City" >
+
+            <label><b>Patient Status</b></label>
+             <input type="text" name="status" placeholder="Patient Status">
+
+            <label><b>Bed Type</b></label>
+             <input type="text" name="bed" placeholder="Bed Type">
+
+             <button type="submit"> Update </button>
+         </form></div>
+{% endif %}
+
+{% if update %}
+<h3>Updated Patient details are below.</h3>
+    <p>Patient Id: {{update['id']}}</p>
+    <p>Name: {{update['name']}}</p>
+    <p>Phone Number: {{update['phone_number']}}</p>
+    <p>Age: {{update['age']}}</p>
+    <p>Address: {{update['address']}}</p>
+    <p>State: {{update['state']}}</p>
+    <p>City: {{update['city']}}</p>
+    <p>Patient Status: {{update['patient_status']}}</p>
+    <p>Bed Type: {{update['bed_type']}}</p>
+{% endif %}
+
+{% if msg %}
+<h4>{{msg}}</h4>
+{% endif %}
+</center>
+</body>
+</html>

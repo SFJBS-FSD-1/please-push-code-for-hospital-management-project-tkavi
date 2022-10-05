@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"><!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+        form { border="3px solid #f1f1f1":}
+    </style>
+
+</head>
+<body>
+<center>
+
+<h3>Medicine Details</h3>
+
+<form method="get" action="/register_medicine">
+        <button type="submit" style="margin:5px;"> Register Page </button>
+</form>
+
+<form method="post" action="/getMedicineById">
+        <input type="text" name="id" placeholder="Medicine Id">
+        <button type="submit" style="margin:5px;"> Get Medicine </button>
+</form>
+
+<form method="post" action="/updateMedicine">
+        <input type="text" name="id" placeholder="Medicine Id">
+        <button type="submit" style="margin:5px;"> Update Medicine </button>
+</form>
+
+<form method="post" action="/deleteMedicine">
+        <input type="text" name="id" placeholder="Medicine Id">
+        <button type="submit" style="margin:5px;"> Delete Medicine </button>
+</form>
+
+
+{% if data %}
+    <h3>Requested Medicine details are below.</h3>
+    <p>Medicine Id: {{data['id']}}</p>
+    <p>Medicine Name: {{data['name']}}</p>
+    <p>Quantity: {{data['qty']}}</p>
+    <p>Rate: {{data['rate']}}</p>
+{% endif %}
+
+{% if update_msg %}
+     <div class="form-container">
+         <h3>Update Medicine Details</h3>
+         <form method="post" action="/update_med">
+              <label><b>Medicine Id</b></label>
+            <input type="text" name="id" placeholder="Medicine Id" >
+
+             <label><b>Medicine Name</b></label>
+            <input type="text" name="name" placeholder="Medicine Name" >
+
+            <label><b>Quantity</b></label>
+            <input type="text" name="qty" placeholder="Quantity" >
+
+            <label><b>Rate</b></label>
+            <input type="text" name="rate" placeholder="Rate" >
+
+             <button type="submit"> Update </button>
+         </form></div>
+{% endif %}
+
+{% if update %}
+<h3>Updated Medicine details are below.</h3>
+    <p>Medicine Id: {{update['id']}}</p>
+    <p>Medicine Name: {{update['medicine_name']}}</p>
+    <p>Quantity: {{update['quantity']}}</p>
+    <p>Rate: {{update['rate']}}</p>
+{% endif %}
+
+{% if msg %}
+<h4>{{msg}}</h4>
+{% endif %}
+
+</center>
+</body>
+</html>

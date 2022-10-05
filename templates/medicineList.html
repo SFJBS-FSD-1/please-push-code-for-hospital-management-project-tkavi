@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"><!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+        form { border="3px solid #f1f1f1":}
+    </style>
+
+</head>
+<body>
+<center>
+<div class="container">
+<h3>Medicines List</h3>
+
+<form method="get" action="/register_medicine">
+        <button type="submit" style="margin:5px;"> Register Page </button>
+</form>
+
+<form method="get" action="/getMedicine">
+        <button type="submit" style="margin:5px;"> Medicine by Id </button>
+</form>
+
+    {% if medicine %}
+    <table style="width:100%">
+        <tr>
+            <th>ID</th>
+            <th>Medicine Name</th>
+            <th>Quantity</th>
+            <th>Rate</th>
+        </tr>
+    {% for i in medicine %}
+        <tr>
+            <td>{{i['id']}}</td>
+            <td>{{i['name']}}</td>
+            <td>{{i['qty']}}</td>
+            <td>{{i['rate']}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+
+
+    {% if msg %}
+    <p>{{msg}}</p>
+    {% endif %}
+
+</div>
+</center>
+</body>
+</html>

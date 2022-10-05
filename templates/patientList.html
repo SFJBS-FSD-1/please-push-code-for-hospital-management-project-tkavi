@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"><!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+        table,th,td { border="1px solid black"}
+    </style>
+</head>
+<body>
+<center>
+<div class="container">
+<h3>Patients List</h3>
+    <div>
+    <form method="get" action="/getActivePatients">
+    <button type="submit" style="margin:5px;"> Active Patients </button></form>
+
+    <form method="get" action="/">
+    <button type="submit" style="margin:5px;"> Main Menu </button></form>
+
+    {% if patient %}
+    <table style="width:100%">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Status</th>
+            <th>Bed Type</th>
+        </tr>
+    {% for i in patient %}
+        <tr>
+            <td>{{i['id']}}</td>
+            <td>{{i['name']}}</td>
+            <td>{{i['phone']}}</td>
+            <td>{{i['age']}}</td>
+            <td>{{i['address']}}</td>
+            <td>{{i['state']}}</td>
+            <td>{{i['city']}}</td>
+            <td>{{i['status']}}</td>
+            <td>{{i['bed']}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+
+
+    {% if msg %}
+    <p>{{msg}}</p>
+    {% endif %}
+
+</div>
+</center>
+</body>
+</html>
